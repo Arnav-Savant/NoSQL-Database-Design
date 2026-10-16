@@ -1,1 +1,12 @@
 transcript.md
+docs/plan.md
+
+node_modules/
+dist/
+.vite/
+
+codebases/*/data/
+codebases/java/out/
+codebases/cpp/build/
+__pycache__/
+*.pyc
