@@ -1,0 +1,188 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './fonts.css';
+@import './code.css';
+
+@custom-variant dark (&:is([data-theme='dark'] *));
+
+/*
+ * Two storage materials drive the palette: RAM is cobalt (electric, fast, volatile) and disk is
+ * iron oxide (the magnetic coating of a platter: slow, durable). Signal marks data that is in
+ * flight or not yet flushed; fault marks a step that goes wrong.
+ */
+:root {
+  --paper: #edf0f3;
+  --paper-raised: #f6f8fa;
+  --ink: #16202e;
+  --ink-muted: #556171;
+  --rule: #c9d0d8;
+  --ram: #2440e6;
+  --ram-wash: #dce2ff;
+  --disk: #8a4b2a;
+  --disk-wash: #f0e1d6;
+  --signal: #9a6a00;
+  --signal-fill: #e8a317;
+  --signal-wash: #fff1c2;
+  --fault: #c2253d;
+  --fault-wash: #fbe0e4;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #121a26;
+    --paper-raised: #182232;
+    --ink: #e4e9f0;
+    --ink-muted: #9aa6b8;
+    --rule: #2a3646;
+    --ram: #8a9dff;
+    --ram-wash: #1f2a55;
+    --disk: #d99a6c;
+    --disk-wash: #3a2618;
+    --signal: #f2be3a;
+    --signal-fill: #f2be3a;
+    --signal-wash: #3a3012;
+    --fault: #ff7a8c;
+    --fault-wash: #3d1820;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #121a26;
+  --paper-raised: #182232;
+  --ink: #e4e9f0;
+  --ink-muted: #9aa6b8;
+  --rule: #2a3646;
+  --ram: #8a9dff;
+  --ram-wash: #1f2a55;
+  --disk: #d99a6c;
+  --disk-wash: #3a2618;
+  --signal: #f2be3a;
+  --signal-fill: #f2be3a;
+  --signal-wash: #3a3012;
+  --fault: #ff7a8c;
+  --fault-wash: #3d1820;
+  color-scheme: dark;
+}
+
+/* shadcn's semantic variables mapped onto the material tokens. */
+:root {
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper-raised);
+  --card-foreground: var(--ink);
+  --popover: var(--paper-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--ram);
+  --primary-foreground: var(--paper);
+  --secondary: var(--ram-wash);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-raised);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--ram-wash);
+  --accent-foreground: var(--ink);
+  --destructive: var(--fault);
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--ram);
+  --radius: 0.375rem;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-rule: var(--rule);
+  --color-ram: var(--ram);
+  --color-ram-wash: var(--ram-wash);
+  --color-disk: var(--disk);
+  --color-disk-wash: var(--disk-wash);
+  --color-signal: var(--signal);
+  --color-signal-fill: var(--signal-fill);
+  --color-signal-wash: var(--signal-wash);
+  --color-fault: var(--fault);
+  --color-fault-wash: var(--fault-wash);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Martian Mono Variable', ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.625;
+    font-variation-settings: 'wdth' 100;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ram);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--ram-wash);
+    color: var(--ink);
+  }
+}
+
+/* Width axis carries the hierarchy: wide for titles, standard for reading. */
+@utility font-wide {
+  font-variation-settings: 'wdth' 112;
+}
+
+@utility font-widest {
+  font-variation-settings: 'wdth' 125;
+}
+
+@utility font-narrow {
+  font-variation-settings: 'wdth' 82;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

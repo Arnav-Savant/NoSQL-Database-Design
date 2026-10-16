@@ -1,0 +1,14 @@
+/* Syntax colours for Shiki's CSS-variables theme, drawn from the material tokens. */
+:root {
+  --code-foreground: var(--ink);
+  --code-background: transparent;
+  --code-token-keyword: var(--ram);
+  --code-token-function: var(--ink);
+  --code-token-string: var(--disk);
+  --code-token-string-expression: var(--disk);
+  --code-token-constant: var(--signal);
+  --code-token-parameter: var(--ink);
+  --code-token-punctuation: var(--ink-muted);
+  --code-token-comment: var(--ink-muted);
+  --code-token-link: var(--ram);
+}
