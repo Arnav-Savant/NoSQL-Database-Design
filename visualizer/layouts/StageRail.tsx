@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router';
-import { stagePath } from '@/content/registry';
+import { stagePath } from '@/content/paths';
 import { STAGE_INDEX } from '@/content/stageIndex';
 import { cn } from '@/utils/cn';
 

@@ -1,21 +1,21 @@
-import { createBrowserRouter } from 'react-router';
-import { JourneyLayout } from '@/layouts/JourneyLayout';
+import { createBrowserRouter, Navigate } from 'react-router';
 import { SiteLayout } from '@/layouts/SiteLayout';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { OverviewPage } from '@/pages/OverviewPage';
-import { StagePage } from '@/pages/StagePage';
-import { WholeDatabasePage } from '@/pages/WholeDatabasePage';
 
+// Everything past the overview loads on demand, so the first page doesn't pay for every stage.
 export const router = createBrowserRouter([
   {
     element: <SiteLayout />,
     children: [
       { index: true, element: <OverviewPage /> },
-      { path: 'database', element: <WholeDatabasePage /> },
+      { path: 'database', lazy: async () => ({ Component: (await import('@/pages/WholeDatabasePage')).WholeDatabasePage }) },
+      { path: 'codebase', element: <Navigate to="/codebase/javascript/README.md" replace /> },
+      { path: 'codebase/:language/*', lazy: async () => ({ Component: (await import('@/pages/CodebasePage')).CodebasePage }) },
       {
         path: 'stages',
-        element: <JourneyLayout />,
-        children: [{ path: ':slug', element: <StagePage /> }],
+        lazy: async () => ({ Component: (await import('@/layouts/JourneyLayout')).JourneyLayout }),
+        children: [{ path: ':slug', lazy: async () => ({ Component: (await import('@/pages/StagePage')).StagePage }) }],
       },
       { path: '*', element: <NotFoundPage /> },
     ],

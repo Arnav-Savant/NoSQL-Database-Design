@@ -10,7 +10,7 @@ type BlockBuffer = Extract<RamComponent, { kind: 'block-buffer' }>;
 
 export function OffsetMapTable({ map }: { map: OffsetMap }) {
   return (
-    <ComponentFrame componentId={map.id} material="ram" title={map.label} meta={`${map.rows.length} keys`} className="w-full sm:w-[15rem]">
+    <ComponentFrame componentId={map.id} material="ram" title={map.label} meta={`${map.rows.length} ${map.rows.length === 1 ? 'key' : 'keys'}`} className="w-full sm:w-[15rem]">
       {map.rows.length === 0 ? (
         <p className="text-[12px] text-ink-muted">Empty</p>
       ) : (
@@ -32,7 +32,7 @@ export function OffsetMapTable({ map }: { map: OffsetMap }) {
 export function MemtableTable({ memtable }: { memtable: Memtable }) {
   const { isRecordFocused, problem } = useHighlight(memtable.id);
   const dirty = memtable.rows.filter((row) => row.state === 'dirty').length;
-  const meta = memtable.capacity !== undefined ? `${memtable.rows.length} of ${memtable.capacity} slots, ${dirty} dirty` : `${memtable.rows.length} keys`;
+  const meta = memtable.capacity !== undefined ? `${memtable.rows.length} of ${memtable.capacity} slots, ${dirty} dirty` : `${memtable.rows.length} ${memtable.rows.length === 1 ? 'key' : 'keys'}`;
   return (
     <ComponentFrame componentId={memtable.id} material="ram" title={memtable.label} meta={meta} className="w-full sm:w-[17rem]">
       <div className="space-y-px">

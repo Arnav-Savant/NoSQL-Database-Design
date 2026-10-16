@@ -42,7 +42,7 @@ export function CodeView({ code, language, activeLine, className, label, wrap = 
               aria-current={active ? 'step' : undefined}
               className={cn('flex border-l-[3px] border-transparent pr-4', active && 'border-ram bg-ram-wash')}
             >
-              <span className="shrink-0 pr-3 pl-2 text-right text-ink-muted/70 select-none tabular-nums" style={{ width: gutterWidth }}>
+              <span className="box-content shrink-0 pr-3 pl-2 text-right text-ink-muted/70 select-none tabular-nums" style={{ width: gutterWidth }}>
                 {lineNumber}
               </span>
               <span className={cn(wrap && 'min-w-0 whitespace-pre-wrap break-words')}>

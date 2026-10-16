@@ -4,6 +4,7 @@ import { cn } from '@/utils/cn';
 
 const NAV_ITEMS = [
   { to: '/stages/requirements', label: 'Stages', matchPrefix: '/stages' },
+  { to: '/codebase', label: 'Code', matchPrefix: '/codebase' },
   { to: '/database', label: 'Whole database', matchPrefix: '/database' },
 ] as const;
 

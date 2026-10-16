@@ -1,26 +1,30 @@
 import { Link } from 'react-router';
+import { HeroMachine } from '@/components/site/HeroMachine';
 import { REQUIREMENTS } from '@/content/requirements';
-import { stagePath } from '@/content/registry';
+import { stagePath } from '@/content/paths';
 import { STAGE_INDEX } from '@/content/stageIndex';
 
 export function OverviewPage() {
   return (
     <main className="mx-auto w-full max-w-[1200px] px-4 py-12 sm:px-8 lg:py-16">
-      <section className="max-w-[60ch]">
-        <h1 className="font-wide text-[36px] leading-[1.08] font-[740] tracking-[-0.015em] sm:text-[52px]">
-          See how a key-value database grows from one file into an LSM tree.
-        </h1>
-        <p className="mt-5 text-[18px] leading-relaxed">
-          Seventeen stages, each fixing a problem the last one left behind. Every stage shows RAM and disk side by side, so you can watch each read, write, flush and merge move data between them.
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Link to="/stages/requirements" className="rounded-sm bg-ink px-5 py-2.5 text-paper no-underline hover:bg-ink/85">
-            Start with the requirements
-          </Link>
-          <Link to="/database" className="rounded-sm border border-ink px-5 py-2.5 text-ink no-underline hover:bg-ink hover:text-paper">
-            Read the whole database in one file
-          </Link>
+      <section className="grid items-start gap-10 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+        <div>
+          <h1 className="font-wide text-[36px] leading-[1.08] font-[740] tracking-[-0.015em] sm:text-[52px]">
+            See how a key-value database grows from one file into an LSM tree.
+          </h1>
+          <p className="mt-5 text-[18px] leading-relaxed">
+            Seventeen stages, each fixing a problem the last one left behind. Every stage shows RAM and disk side by side, so you can watch each read, write, flush and merge move data between them.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link to="/stages/requirements" className="rounded-sm bg-ink px-5 py-2.5 text-paper no-underline hover:bg-ink/85">
+              Start with the requirements
+            </Link>
+            <Link to="/database" className="rounded-sm border border-ink px-5 py-2.5 text-ink no-underline hover:bg-ink hover:text-paper">
+              Read the whole database in one file
+            </Link>
+          </div>
         </div>
+        <HeroMachine />
       </section>
 
       <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">

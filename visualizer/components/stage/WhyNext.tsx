@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { stagePath } from '@/content/registry';
+import { stagePath } from '@/content/paths';
 import type { StageMeta } from '@/content/types';
 
 export function WhyNext({ text, next }: { text?: string; next?: StageMeta }) {

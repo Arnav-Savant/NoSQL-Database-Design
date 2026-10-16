@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import { Callout } from '@/components/stage/Callout';
 import { ComponentList } from '@/components/stage/ComponentList';
 import { RequirementScorecard } from '@/components/stage/RequirementScorecard';
+import { StageCodeLinks } from '@/components/stage/StageCodeLinks';
 import { StageHeader } from '@/components/stage/StageHeader';
 import { WhyNext } from '@/components/stage/WhyNext';
 import { Machine } from '@/components/machine/Machine';
@@ -69,7 +70,7 @@ export function StagePage() {
       {(content.limitations.length > 0 || content.notes.length > 0 || content.asides.length > 0) && (
         <div className="grid gap-8 lg:grid-cols-2">
           {content.limitations.length > 0 && (
-            <section>
+            <section className="min-w-0">
               <h2 className="mb-3 font-wide text-[21px] font-[650]">What is still wrong</h2>
               <div className="space-y-4">
                 {content.limitations.map((limitation) => (
@@ -81,7 +82,7 @@ export function StagePage() {
             </section>
           )}
           {(content.notes.length > 0 || content.asides.length > 0) && (
-            <section>
+            <section className="min-w-0">
               <h2 className="mb-3 font-wide text-[21px] font-[650]">Worth knowing</h2>
               <div className="space-y-4">
                 {content.notes.map((note) => (
@@ -100,6 +101,8 @@ export function StagePage() {
           )}
         </div>
       )}
+
+      <StageCodeLinks stageSlug={content.slug} />
 
       <WhyNext text={content.whyNext} next={next} />
     </main>
