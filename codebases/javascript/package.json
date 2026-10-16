@@ -1,0 +1,13 @@
+{
+  "name": "lsm-store-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A log-structured merge tree key-value store, written to learn storage engine internals.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "demo": "node demo/main.js"
+  }
+}
